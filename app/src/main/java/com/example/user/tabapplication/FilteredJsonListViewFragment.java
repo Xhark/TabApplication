@@ -23,15 +23,8 @@ public class FilteredJsonListViewFragment extends Fragment {
 
     String tag;
 
-    private FilteredJsonListViewFragment() {
-    }
-
-    public FilteredJsonListViewFragment(String _tag, int _id) {
-        super();
-        this.tag = _tag;
-    }
-
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        tag = getArguments().getString(ARG_TAG);
         View view = inflater.inflate(R.layout.listview_layout, container, false);
         listView = (ListView) view.findViewById(R.id.listView);
         return view;
@@ -66,11 +59,13 @@ public class FilteredJsonListViewFragment extends Fragment {
     }
 
     private static final String ARG_PAGE_NUMBER = "page_number";
+    private static final String ARG_TAG = "tag";
 
     public static FilteredJsonListViewFragment newInstance(String tag, int page) {
-        FilteredJsonListViewFragment fragment = new FilteredJsonListViewFragment(tag, page);
+        FilteredJsonListViewFragment fragment = new FilteredJsonListViewFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_PAGE_NUMBER, page);
+        args.putString(ARG_TAG, tag);
         fragment.setArguments(args);
         return fragment;
     }
