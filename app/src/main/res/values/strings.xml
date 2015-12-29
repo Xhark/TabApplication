@@ -2,4 +2,16 @@
     <string name="app_name">TabApplication</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
+
+    <string-array name="image_ids">
+        <item>@drawable/swift</item>
+        <item>@drawable/php</item>
+        <item>@drawable/haskell</item>
+        <item>@drawable/r</item>
+        <item>@drawable/lua</item>
+        <item>@drawable/scala</item>
+        <item>@drawable/scheme</item>
+        <item>@drawable/html5</item>
+        <item>@drawable/julia</item>
+    </string-array>
 </resources>
