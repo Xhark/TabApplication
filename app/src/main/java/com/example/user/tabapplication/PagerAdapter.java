@@ -17,7 +17,7 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
 
         switch (position) {
             case 0:
-                return new JsonListViewFragment();
+                return FilteredJsonListViewFragment.newInstance("", 0);
             case 1:
                 return new GalleryGridViewFragment();
             case 2:
