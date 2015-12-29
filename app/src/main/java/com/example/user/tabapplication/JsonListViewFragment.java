@@ -23,7 +23,6 @@ public class JsonListViewFragment extends Fragment {
     ArrayAdapter<String> adapter;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         return inflater.inflate(R.layout.listview_layout, container, false);
     }
 

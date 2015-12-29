@@ -17,7 +17,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class FilteredJsonListViewFragment extends Fragment {
-    ListView listView;
+    private ListView listView;
     ArrayList<String> list;
     ArrayAdapter<String> adapter;
 
@@ -32,7 +32,6 @@ public class FilteredJsonListViewFragment extends Fragment {
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.listview_layout, container, false);
         listView = (ListView) view.findViewById(R.id.listView);
         return view;

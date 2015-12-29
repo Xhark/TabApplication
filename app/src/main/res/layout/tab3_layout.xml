@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    android:id="@+id/tab3_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -7,10 +9,8 @@
         android:id="@+id/tab3_tab_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbar"
         android:layout_gravity="center_horizontal"
         android:background="?attr/colorPrimary"
-        android:elevation="6dp"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:tabMode="scrollable"/>
@@ -19,5 +19,5 @@
         android:id="@+id/tab3_pager"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@+id/tab_layout"/>
-</LinearLayout>
+        android:layout_below="@+id/tab3_tab_layout"/>
+</RelativeLayout>

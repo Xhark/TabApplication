@@ -3,6 +3,8 @@ package com.example.user.tabapplication;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,8 +23,10 @@ import java.util.Map;
 public class Tab3Fragment extends Fragment {
     public ArrayList<String> all_tags = new ArrayList<String>();
     public Map<String, ArrayList<JSONObject>> dataMap = new HashMap<String, ArrayList<JSONObject> >();
+    private ViewPager viewPager;
+    private Tab3PagerAdapter adapter;
+    private TabLayout tabLayout;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         return inflater.inflate(R.layout.tab3_layout, container, false);
     }
 
@@ -51,17 +55,19 @@ public class Tab3Fragment extends Fragment {
             e.printStackTrace();
         }
 
-        TabLayout tabLayout = (TabLayout) getActivity().findViewById(R.id.tab3_tab_layout);
+        this.tabLayout = (TabLayout) getActivity().findViewById(R.id.tab3_tab_layout);
         for (String key : all_tags) {
             tabLayout.addTab(tabLayout.newTab().setText(key));
         }
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        final ViewPager viewPager = (ViewPager) getActivity().findViewById(R.id.tab3_pager);
-        final Tab3PagerAdapter adapter = new Tab3PagerAdapter
-                (getActivity().getSupportFragmentManager(), tabLayout.getTabCount(), this);
+        this.viewPager = (ViewPager) getActivity().findViewById(R.id.tab3_pager);
+        this.adapter = new Tab3PagerAdapter
+                (getFragmentManager(), tabLayout.getTabCount(), this);
+
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -75,8 +81,23 @@ public class Tab3Fragment extends Fragment {
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        tabLayout.removeAllTabs();
+        for (String key : all_tags) {
+            tabLayout.addTab(tabLayout.newTab().setText(key));
+        }
+
+        this.adapter = new Tab3PagerAdapter
+                (getFragmentManager(), tabLayout.getTabCount(), this);
+
+        viewPager.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+
     }
 }

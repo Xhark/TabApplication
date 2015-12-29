@@ -21,7 +21,6 @@ public class GalleryGridViewFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         return inflater.inflate(R.layout.gallery_layout, container, false);
     }
 
